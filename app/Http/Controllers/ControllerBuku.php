@@ -3,41 +3,50 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Buku;
 
-class UjiCobaController extends Controller
+class ControllerBuku extends Controller
 {
-    public function boomesport()
+    /**
+     * Display a listing of the resource.
+     */
+    public function buku()
     {
-        return view('Boom');
+        $data_buku = Buku::all()->sortByDesc('id');
+
+        return view('index', compact('data_buku'));
     }
 
-    public function prxesport()
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
     {
-        return view('prx');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function fnaticeesport()
+    public function store(Request $request)
     {
-        return view('fnatic');
+        //
     }
 
     /**
      * Display the specified resource.
      */
-    public function fpxesport()
+    public function show(string $id)
     {
-        return view('fpx');
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function beranda()
+    public function edit(string $id)
     {
-        return view('welcome');
+        //
     }
 
     /**

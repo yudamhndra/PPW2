@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ControllerBuku;
 use App\Http\Controllers\ControllerPenghuni;
 use App\Http\Controllers\UjiCobaController;
 use Illuminate\Support\Facades\Route;
@@ -36,5 +37,7 @@ Route::get('/fnatic', [UjiCobaController::class, 'fnaticesport']);
 Route::get('/fpx', [UjiCobaController::class, 'fpxesport']);
 
 Route::get('/penghuni', [ControllerPenghuni::class, 'daftarPenghuni']);
+
+Route::get('/buku', [ControllerBuku::class, 'buku']);
 
 Route::get('/', [UjiCobaController::class, 'beranda']);
