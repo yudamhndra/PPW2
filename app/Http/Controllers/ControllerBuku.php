@@ -12,17 +12,22 @@ class ControllerBuku extends Controller
      */
     public function buku()
     {
-        $data_buku = Buku::all()->sortByDesc('id');
+        $data_buku = Buku::all();
+        $no = 0;
+        $jumlah_buku = Buku::count();
+        $jumlah_harga = Buku::sum('harga');
 
-        return view('index', compact('data_buku'));
+        return view('buku', compact('data_buku','no', 'jumlah_buku',  'jumlah_harga'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function Total()
     {
-        //
+        $jumlah_harga = Buku::sum('harga');
+
+        return view('index', compact('jumlah_harga'));
     }
 
     /**

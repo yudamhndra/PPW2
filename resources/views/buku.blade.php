@@ -47,7 +47,7 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>No.</th>
                         <th>Judul Buku</th>
                         <th>Penulis</th>
                         <th>Harga</th>
@@ -58,17 +58,18 @@
                 <tbody>
                     @foreach($data_buku as $buku)
                         <tr>
-                            <td>{{ $buku->id }}</td>
+                            <td>{{ ++$no }}</td>
                             <td>{{ $buku->judul }}</td>
                             <td>{{ $buku->penulis }}</td>
                             <td>{{ "Rp ".number_format($buku->harga, 2, ',', '.' )}}</td>
                             <td>{{ $buku->tgl_terbit }}</td>
-                            <td>
-                            </td>
+                            <td></td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
+            <p><strong>Total Buku yang tersedia:</strong> {{ number_format($jumlah_buku) }} buah</p>
+            <p><strong>Total Harga Semua Buku:</strong> Rp{{ number_format($jumlah_harga, 2, ',', '.') }}</p>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -76,4 +77,5 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
 
