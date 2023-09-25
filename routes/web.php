@@ -28,6 +28,9 @@ Route::get('/about', function () {
     ]);
 });
 
+Route::get('/', [UjiCobaController::class, 'beranda']);
+
+// Perusahaan game
 Route::get('/boom', [UjiCobaController::class, 'boomesport']);
 
 Route::get('/prx', [UjiCobaController::class, 'prxesport']);
@@ -36,8 +39,18 @@ Route::get('/fnatic', [UjiCobaController::class, 'fnaticesport']);
 
 Route::get('/fpx', [UjiCobaController::class, 'fpxesport']);
 
+// Perumahan
 Route::get('/penghuni', [ControllerPenghuni::class, 'daftarPenghuni']);
 
-Route::get('/buku', [ControllerBuku::class, 'buku']);
+// Buku
+Route::get('/buku', [ControllerBuku::class, 'index']);
 
-Route::get('/', [UjiCobaController::class, 'beranda']);
+Route::get('/buku/create', [ControllerBuku::class, 'create'])->name('buku.create');
+
+Route::post('/buku', [ControllerBuku::class, 'store'])->name('buku.store');
+
+Route::get('buku/edit/{id}', [ControllerBuku::class, 'edit'])->name('buku.edit');
+
+Route::post('/buku/update/{id}', [ControllerBuku::class, 'update'])->name('buku.update');
+
+Route::delete('/buku/delete/{id}', [ControllerBuku::class, 'destroy'])->name('buku.destroy');
