@@ -77,7 +77,7 @@
                             <div>
                                 <form action="{{ route('buku.edit', $buku->id) }}">
                                     @csrf
-                                    <button onclick="">Update</button>
+                                    <button onclick="">Edit</button>
                                 </form>
                             </div>
                         </td>
