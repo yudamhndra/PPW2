@@ -14,6 +14,10 @@ class Buku extends Model
         'judul', // Add 'judul' to the list of fillable fields
         'penulis',
         'harga',
-        'tgl_terbit',
+        'tgl_terbit'
+    ];
+
+    protected $dates = [
+        'tgl_terbit'
     ];
 }

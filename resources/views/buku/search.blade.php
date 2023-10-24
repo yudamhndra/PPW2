@@ -1,40 +1,5 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>id</th>
-                <th>Judul Buku</th>
-                <th>Penulis</th>
-                <th>Harga</th>
-                <th>Tgl. Terbit</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($data_buku as $buku)
-                <tr>
-                    <td>{{ $buku->id }}</td>
-                    <td>{{ $buku->judul }}</td>
-                    <td>{{ $buku->penulis }}</td>
-                    <td>{{ "Rp ".number_format($buku->harga, 2, ',','.' )}}</td>
-                    <td>{{ $buku->tgl_terbit }}</td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-</body>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -86,30 +51,10 @@
                     @endforeach
                 </tbody>
             </table>
-
-            @include('pagination', ['paginator' => $data_buku])
-            
-            <form action="{{route('buku.search')}}" method="get">
-                @csrf
-                <input type="text" name="kata" class="form-control" placeholder="cari..." style="width: 30%;
-                display: inline; margin-top:10px; margin-bottom: 10px; float:right;">
-            </form>
-
-            form action="{{ route('buku.create')}}" align="left">
-                <button onclick="">Tambah buku</button>
-            </form>
-
-            <p></p>
-
-            <p><strong>Total Buku yang tersedia:</strong> {{ number_format($jumlah_buku) }} buah</p>
-
-            <p><strong>Total Harga Semua Buku:</strong> Rp{{ number_format($jumlah_harga, 2, ',', '.') }}</p>
-
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         </div>
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>

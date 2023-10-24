@@ -13,13 +13,34 @@ class ControllerBuku extends Controller
      */
     public function index()
     {
-        $data_buku = Buku::all();
-        $no = 0;
+        // $data_buku = Buku::all();
+        // $no = 0;
+        $batas = 5;
+        $data_buku = Buku::orderBy('id','desc')->paginate($batas);
+        $no = $batas * ($data_buku->currentPage()-1);
         $jumlah_buku = Buku::count();
         $jumlah_harga = Buku::sum('harga');
 
         return view('buku.index', compact('data_buku','no', 'jumlah_buku',  'jumlah_harga'));
     }
+
+    public function search(Request $request)
+    {
+        $batas = 5;
+        $cari = $request->input('kata'); // Mengambil nilai pencarian dari input form
+
+        $data_buku = Buku::where('judul', 'like', '%' . $cari . '%')
+            ->orWhere('penulis', 'like', '%' . $cari . '%')
+            ->paginate($batas);
+
+        $jumlah_buku = $data_buku->total(); // Mengambil total jumlah buku yang cocok dengan pencarian
+
+        // Menghitung nomor urut untuk setiap item pada halaman
+        $no = ($data_buku->currentPage() - 1) * $batas + 1;
+
+        return view('buku.search', compact('data_buku', 'no', 'jumlah_buku', 'cari'));
+    }
+
 
     /**
      * Show the form for creating a new resource.

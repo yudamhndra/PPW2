@@ -4,11 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title')</title>
-    <!-- Tambahkan link ke CSS atau JavaScript umum jika diperlukan -->
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.css')}}">
+    <script src="{{ asset('js/jquery.js')}}"></script>
+    <script src="{{ asset('js/bootstrap-datepicker.js')}}"></script>
+
 </head>
 <body>
-    <div class="container">
+        include('layouts.header')
         @yield('content') <!-- Ini adalah bagian yang akan diisi oleh halaman-halaman spesifik -->
-    </div>
+
+        <script type="text/javascript">
+            $('.date').datepicker({
+                format: 'yyyy/mm/dd',
+                autoclose: "true"
+            })
+
+        </script>
+        <script src="{{ asset('js/bootstrap.min.js')}}"></script>
 </body>
 </html>
