@@ -4,6 +4,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Daftar Buku</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+        <style>
+            #toast {
+                position: fixed;
+                bottom: 10px;
+                right: 10px;
+                background-color: #333;
+                color: #fff;
+                padding: 10px;
+                border-radius: 5px;
+                display: none;
+            }
+        </style>
     </head>
     <body>
     <div class="container">
@@ -12,7 +25,7 @@
             
             <table class="table table-striped">
                 <thead>
-                    <tr>
+                    <tr style="text-align: center;">
                         <th>No.</th>
                         <th>Judul Buku</th>
                         <th>Penulis</th>
@@ -23,7 +36,7 @@
                 </thead>
                 <tbody>
                     @foreach($data_buku as $buku)
-                    <tr>
+                    <tr style="text-align: center;">
                         <td style="flex: center;">{{ ++$no }}</td>
                         <td>{{ $buku->judul }}</td>
                         <td>{{ $buku->penulis }}</td>
@@ -34,14 +47,14 @@
                                 <form action="{{ route('buku.destroy', $buku->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-primary" onclick="return confirm('Yakin mau dihapus?')">Delete</button>
+                                    <button class="btn btn-danger" onclick="return confirm('Yakin mau dihapus?')">Delete</button>
                                 </form>
                             </div>
                             <p></p>
                             <div>
                                 <form action="{{ route('buku.edit', $buku->id) }}">
                                     @csrf
-                                    <button  class="btn btn-primary" onclick="">Edit</button>
+                                    <button  class="btn btn-warning" onclick="">Edit</button>
                                 </form>
                             </div>
                         </td>
@@ -69,6 +82,25 @@
             <p><strong>Total Harga Semua Buku:</strong> Rp{{ number_format($jumlah_harga, 2, ',', '.') }}</p>
 
         </div>
+
+        <div id="toast" class="hidden"></div>
+
+        <script>
+            var message =!! json_encode(message);
+            
+            function showToast(message) {
+                var toast = document.getElementById("toast");
+                toast.innerHTML = message;
+                toast.style.display = "block";
+                setTimeout(function() {
+                    toast.style.display = "none";
+                }, 3000);
+            }
+            
+            showToast(message);
+        </script>
+
+
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

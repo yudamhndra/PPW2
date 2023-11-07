@@ -13,7 +13,7 @@ class ControllerBuku extends Controller
      */
     public function index()
     {
-        $batas = 5;
+        $batas = 3;
         $data_buku = Buku::orderBy('id','desc')->paginate($batas);
         $no = $batas * ($data_buku->currentPage()-1);
         $jumlah_buku = Buku::count();
